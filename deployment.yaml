@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+  labels:
+    app: python
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}
+        ports:
+        - containerPort: 9080
+        readinessProbe:
+         httpGet:
+           path: /health
+           port: 9080
+         initialDelaySeconds: 15
+         periodSeconds: 5
+        livenessProbe:
+         tcpSocket:
+          port: 9080
+         initialDelaySeconds: 10
+         periodSeconds: 5
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: python-service
+spec:
+  selector:
+    app: python
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 9080
