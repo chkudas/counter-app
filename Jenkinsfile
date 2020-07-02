@@ -50,6 +50,7 @@ pipeline {
 			
 			steps {
 				echo "Push Docker Image "
+				sh "docker login --username=chinmaydas --password=Redhat@123"
                 sh "docker push ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
 
 			}
