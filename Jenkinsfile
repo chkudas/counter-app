@@ -3,7 +3,7 @@ pipeline {
     environment {
 		RELEASE_DATE = new Date().format('yy.M')
 		BUILD_NUM = "${RELEASE_DATE}.${BUILD_NUMBER}"
-		DOCKER_REPO="shubhasis"
+		DOCKER_REPO="chinmaydas"
         DOCKER_IMG_NAME="webapp"
 	
     }
@@ -27,20 +27,20 @@ pipeline {
 				echo "Checkout ${BUILD_NUM}"
 			}
 		}
-        stage('Build Code')
-        {
-            steps {
+  /*      stage('Build Code')
+ #       {
+ #           steps {
 				echo "Build Code ${BUILD_NUM}"
                 sh "cd AppCode && mvn clean package"
 			}
         }
-
+*/
     	stage('Build Docker Image')
 		{
 			
 			steps {
 				echo "Build Docker Image"
-                sh "cd AppCode && docker build . -t ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
+                sh "docker build . -t ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
 
 			}
 		}
