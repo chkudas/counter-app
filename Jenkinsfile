@@ -50,7 +50,7 @@ pipeline {
 			
 			steps {
 				echo "Push Docker Image "
-                sh "cd AppCode && docker push ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
+                sh "docker push ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
 
 			}
 		}
