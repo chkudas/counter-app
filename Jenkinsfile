@@ -64,7 +64,7 @@ pipeline {
                  enableConfigSubstitution: true,
                             
                  dockerCredentials: [
-                        [credentialsId: 'DOCKER_LOGIN']
+                        [credentialsId: 'dockerhubcred']
                         
                  ]
                 )
