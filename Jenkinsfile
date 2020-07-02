@@ -41,7 +41,7 @@ pipeline {
 			steps {
 				echo "Build Docker Image"
 				sh "docker -v"
-                sh "docker build . -t ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
+                sh "sudo docker build . -t ${DOCKER_REPO}/${DOCKER_IMG_NAME}:${BUILD_NUM}"
 
 			}
 		}
