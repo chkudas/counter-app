@@ -3,7 +3,7 @@ pipeline {
     environment {
 		RELEASE_DATE = new Date().format('yy.M')
 		BUILD_NUM = "${RELEASE_DATE}.${BUILD_NUMBER}"
-		DOCKER_REPO="chinmaydas"
+		DOCKER_REPO="shubhasis"
         DOCKER_IMG_NAME="webapp"
 	
     }
