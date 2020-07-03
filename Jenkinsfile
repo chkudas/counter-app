@@ -60,7 +60,7 @@ pipeline {
             steps {
 				echo "Deploying to Production Server"
                 kubernetesDeploy(kubeconfigId: 'KUBECONFIG',               // REQUIRED
-                 configs: 'deployment.yaml', // REQUIRED
+                 configs: 'depconfig/deployment.yaml', // REQUIRED
                  enableConfigSubstitution: true,
                             
                  dockerCredentials: [
